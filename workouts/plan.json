@@ -1,0 +1,45 @@
+{
+  "name": "Full Body Split",
+  "style": "high rep low weight",
+  "session_minutes": "60 to 90",
+  "rest_seconds": "60 to 90",
+  "notes": "Pick a weight where the last 2 or 3 reps burn but form stays clean. Controlled tempo. Warm up 5 minutes first.",
+  "days": {
+    "monday": {
+      "title": "Day 1. Chest, Back, Core",
+      "exercises": [
+        {"slug": "incline-db-press", "name": "Incline dumbbell press", "target": "3 x 12-15"},
+        {"slug": "db-fly", "name": "Flat dumbbell fly", "target": "3 x 15"},
+        {"slug": "one-arm-row", "name": "One arm dumbbell row", "target": "3 x 12-15 per side"},
+        {"slug": "pulldown", "name": "Lat pulldown or band pulldown", "target": "3 x 15"},
+        {"slug": "pushups", "name": "Push-ups", "target": "3 x max, cap 20"},
+        {"slug": "plank", "name": "Plank", "target": "3 x 45 sec"},
+        {"slug": "dead-bug", "name": "Dead bug", "target": "3 x 12 per side"}
+      ]
+    },
+    "wednesday": {
+      "title": "Day 2. Legs, Shoulders",
+      "exercises": [
+        {"slug": "goblet-squat", "name": "Goblet squat", "target": "3 x 15"},
+        {"slug": "db-rdl", "name": "Dumbbell Romanian deadlift", "target": "3 x 12-15"},
+        {"slug": "lunges", "name": "Walking lunges", "target": "3 x 10 per side"},
+        {"slug": "calf-raises", "name": "Standing calf raises", "target": "3 x 20"},
+        {"slug": "db-shoulder-press", "name": "Seated dumbbell shoulder press", "target": "3 x 12-15"},
+        {"slug": "lateral-raises", "name": "Lateral raises", "target": "3 x 15-20"},
+        {"slug": "rear-delt", "name": "Rear delt fly or face pull", "target": "3 x 15-20"}
+      ]
+    },
+    "friday": {
+      "title": "Day 3. Arms, Core, Carry",
+      "exercises": [
+        {"slug": "db-curl", "name": "Dumbbell curl", "target": "3 x 12-15"},
+        {"slug": "hammer-curl", "name": "Hammer curl", "target": "3 x 12-15"},
+        {"slug": "oh-triceps", "name": "Overhead triceps extension", "target": "3 x 12-15"},
+        {"slug": "kickback", "name": "Triceps kickback or pushdown", "target": "3 x 15"},
+        {"slug": "farmer-carry", "name": "Farmer carry", "target": "3 x 40 yards"},
+        {"slug": "knee-raises", "name": "Hanging knee raise or crunch", "target": "3 x 15"},
+        {"slug": "finisher", "name": "Brisk walk or bike finisher", "target": "10 to 15 min"}
+      ]
+    }
+  }
+}

@@ -12,3 +12,18 @@ Daily pipeline (6 AM ET weekdays, run by Manny's scheduled Claude task):
 6. Commit index.html plus queue deletions, push to main. Pages serves it.
 
 The public wrapper (index.html as served) contains only the PIN gate and ciphertext.
+
+## Workout tab
+
+The brief has two tabs: BRIEF and WORKOUT. The workout module lives in this repo:
+
+- `workouts/plan.json` — the Mon/Wed/Fri full body plan (high rep, low weight). Edit here to change the plan.
+- `workouts/log/` — one JSON file per logged set. Written live by the tab's LOG SET button through the GitHub contents API (same pattern as `queue/`), or by the pipeline from Whspr transcript emails once that bridge is set up.
+- `workouts/history.json` — rolled-up history keyed by date then exercise slug. This is what powers the "last time" line under each exercise.
+- `tools/workout_parse.py` — parses raw spoken lines ("25 pounds 3 sets of 15") into weight, sets, reps and rolls log files into history.
+
+Daily pipeline additions (every run, not just training days):
+
+1. Before building: search Gmail for Whspr workout transcript emails (subject or sender containing "whspr", unconfigured until Manny sends a test note). Write each as a `workouts/log/*.json` entry with the raw transcript.
+2. Run `python3 tools/workout_parse.py .` then `git rm` the consumed `workouts/log/*.json` files. Commit the updated `workouts/history.json`.
+3. Build the brief from `templates/brief_template.html`: substitute the font placeholders, `__PLAN_JSON__` with `workouts/plan.json`, `__HISTORY_JSON__` with `workouts/history.json`, and `__GH_TOKEN__` with the queue-writer token. Update the date, weather, headline, terrain, stats, and list panels for the day. The workout tab itself is client-side and picks the right day automatically.
