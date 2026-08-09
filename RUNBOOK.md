@@ -13,6 +13,15 @@ Daily pipeline (6 AM ET weekdays, run by Manny's scheduled Claude task):
 
 The public wrapper (index.html as served) contains only the PIN gate and ciphertext.
 
+## Priority appointments
+
+Two categories outrank everything else in the brief and must never be dropped:
+
+1. **Jobber jobs.** Manny's work schedule lives in Jobber and reaches Google through Jobber's one-way iCal calendar sync (Google refreshes it roughly every 12 hours). In the gather, always call list_calendars and include every calendar whose name mentions Jobber (or that carries getjobber.com events) alongside the account and Family calendars. Every Jobber visit today gets a gold dot on the terrain and a named line in its act. Week-ahead days with Jobber visits get a gold event tag with the client name or job, and the headline names the first job when one lands today. If no Jobber calendar exists on the account yet, fall back to fresh Jobber notification emails (notification@*.getjobber.com) for anything scheduled, and note once in the brief that the Jobber calendar sync is not connected.
+2. **VA BDD appointments.** Anything tied to the VA claim: BDD, C&P, SHPE, SHA sittings, VA exams, VSO meetings (Jose Nazario), VPRR. Same treatment: terrain dot with label, named act line, week-ahead tag, plus a PREP row in Needs Attention the day before any exam or sitting.
+
+If a Jobber job and a BDD appointment share a day, the headline names them both. These two beat promos, bills, and everything else for space on the page.
+
 ## Workout tab
 
 The brief has two tabs: BRIEF and WORKOUT. The workout module lives in this repo:
