@@ -36,3 +36,71 @@ Daily pipeline additions (every run, not just training days):
 1. Before building: search Gmail for Whspr workout transcript emails (subject or sender containing "whspr", unconfigured until Manny sends a test note). Write each as a `workouts/log/*.json` entry with the raw transcript.
 2. Run `python3 tools/workout_parse.py .` then `git rm` the consumed `workouts/log/*.json` files. Commit the updated `workouts/history.json`.
 3. Build the brief from `templates/brief_template.html`: substitute the font placeholders, `__PLAN_JSON__` with `workouts/plan.json`, `__HISTORY_JSON__` with `workouts/history.json`, and `__GH_TOKEN__` with the queue-writer token. Update the date, weather, headline, terrain, stats, and list panels for the day. The workout tab itself is client-side and picks the right day automatically.
+
+## Panels (added 2026-08-19)
+
+The brief template no longer carries sample day content. `templates/brief_template.html`
+holds the chassis (fonts, tokens, CSS, workout tab, JS) and one placeholder,
+`__BRIEF_BODY__`, which the daily build fills with the whole BRIEF tab. Build the body in
+this order:
+
+headline · terrain · acts · stat grid · NEEDS ATTENTION · VA CLAIM · LEADS AND QUOTES ·
+MONEY · ALBIE · SkillBridge strip · RESOLVED · WEEK AHEAD
+
+A panel with nothing real in it gets dropped for the day, heading and all. Never render an
+empty panel or a placeholder row.
+
+### Stat grid
+
+Meetings Today · Needs You · Open Pipeline · Today's High. Open Pipeline is the sum of the
+Coming In column, rounded to one decimal in thousands.
+
+### VA CLAIM (`.panel.mission`)
+
+Header carries a countdown to the next hard claim date, a progress bar of exam sittings
+done over total, and the packet window. Claim items live here and NOT in Needs Attention,
+so nothing repeats. Track every C&P sitting, the packet review window, records deadlines
+(DoD SAFE pickups expire 7 days after drop off), and anything from Jose Nazario. Never put
+a draft-reply button on a medical or claim row.
+
+### LEADS AND QUOTES
+
+Every open lead and unanswered quote, each with an age clock (`.age`, and `.age.hot` past
+10 days). Sources: ProReferral notifications, Jobber quote and request emails, supplier
+threads waiting on Manny. Sorted newest first. This panel is money, so it never gets cut
+for space.
+
+### MONEY
+
+Two columns. Coming In is built from Jobber notification emails: invoices sent, quotes
+approved, deposits paid, balances outstanding. Going Out is the next 30 days of recurring
+bills read off the most recent notice for each (FACTS tuition, SoFi, FPL, Chase, Sherwin).
+QuickBooks holds only mileage and receipts on this account, so it has no invoices and must
+not be used as an AR source. Always print the footer line saying which side is estimated.
+
+### ALBIE
+
+Everything for Albion: OLL homework and letters, FACTS tuition, Step Up / SUFS attestations
+and scholarship items, Catholic Youth Sports and PlayMetrics, school events. School items
+go here, not in Needs Attention.
+
+### SkillBridge strip (`.strip`)
+
+Compact countdown to 9/2 plus one line of current status. Retire the strip once the program
+starts and reuse it for whatever countdown matters next.
+
+### Draft reply buttons
+
+Rows where Manny owes someone a written reply get a second action, `.dr`, next to the tag.
+It opens a seeded Claude session at
+`https://claude.ai/new?q={urlencoded seed}&surface=cowork&composer=mini`.
+The seed opens imperative, describes the thread in Manny's own terms without quoting the
+other person, tells the fresh session to search Gmail and re-read the thread itself, names
+the connected tools, and closes on a Gmail draft. No seed on anything touching medical
+records, the claim, credentials, or account numbers.
+
+### Jobber
+
+Still no Jobber calendar on the account. Until an iCal feed is wired in, jobs come only
+from Jobber notification emails and customer replies, and any job named in the brief says
+so once.

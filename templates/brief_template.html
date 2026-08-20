@@ -109,6 +109,50 @@ body::after{content:'';position:fixed;inset:0;z-index:0;background:radial-gradie
 .wday li:last-child{border:none;}
 .wday li span{font-family:'Space Mono';font-size:10px;color:var(--muted);white-space:nowrap;}
 
+/* mission strip: VA claim */
+.mission{border-top:3px solid var(--gold);}
+.mhead{display:flex;align-items:center;gap:18px;padding:16px 18px;border-bottom:1px solid var(--line-soft);}
+.mnum{font-family:'Oswald';font-weight:700;font-size:40px;line-height:1;color:var(--gold);font-variant-numeric:tabular-nums;text-align:center;flex:0 0 auto;}
+.mnum small{display:block;font-family:'Space Mono';font-size:9px;color:var(--muted);letter-spacing:.12em;margin-top:5px;text-transform:uppercase;}
+.mbody{flex:1;}
+.mtitle{font-family:'Oswald';font-weight:600;font-size:15px;letter-spacing:.05em;text-transform:uppercase;margin-bottom:9px;}
+.mtrack{height:7px;background:#1c1c22;position:relative;overflow:hidden;}
+.mtrack i{position:absolute;left:0;top:0;bottom:0;background:var(--gold);}
+.mlab{font-family:'Space Mono';font-size:10px;color:var(--muted);letter-spacing:.08em;margin-top:7px;text-transform:uppercase;}
+.mlab b{color:var(--gold);font-weight:400;}
+
+/* money two column */
+.money{display:grid;grid-template-columns:1fr 1fr;}
+.mcol{padding-bottom:10px;border-right:1px solid var(--line-soft);}
+.mcol:last-child{border-right:none;}
+.mcol h3{font-family:'Space Mono';font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);padding:13px 18px 9px;}
+.mline{display:flex;align-items:baseline;gap:10px;padding:7px 18px;font-size:13.5px;border-bottom:1px solid var(--line-soft);}
+.mline:last-child{border-bottom:none;}
+.mline .mnm{flex:1;color:#d8d8dd;}
+.mline .mvl{font-family:'Oswald';font-weight:600;font-size:15px;font-variant-numeric:tabular-nums;color:#fff;}
+.mline .mdt{font-family:'Space Mono';font-size:9.5px;color:var(--muted);width:54px;text-align:right;}
+.mline.in .mvl{color:var(--green);}
+.mline.soon .mdt{color:#e0a070;}
+.mtot{display:flex;justify-content:space-between;align-items:baseline;padding:11px 18px 2px;font-family:'Space Mono';font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);border-top:1px solid var(--line);margin-top:6px;}
+.mtot b{font-family:'Oswald';font-size:16px;color:var(--gold);letter-spacing:.02em;font-variant-numeric:tabular-nums;}
+
+/* lead age clock */
+.row .age{font-family:'Space Mono';font-size:10px;padding:3px 8px;background:#2a2118;color:#e0a070;white-space:nowrap;}
+.row .age.hot{background:#3a1c1c;color:#e07070;}
+
+/* row action stack */
+.ract{display:flex;flex-direction:column;align-items:flex-end;gap:6px;flex:0 0 auto;margin-top:2px;}
+.dr{font-family:'Oswald';font-weight:600;font-size:10px;letter-spacing:.07em;text-transform:uppercase;color:var(--gold);border:1px solid var(--gold);padding:4px 9px;text-decoration:none;white-space:nowrap;transition:background .2s ease,color .2s ease;}
+.dr:hover{background:var(--gold);color:#0a0a0c;}
+
+/* compact countdown strip */
+.strip{display:flex;align-items:center;gap:18px;background:var(--card);border:1px solid var(--line);border-left:3px solid var(--gold);padding:15px 18px;margin-bottom:26px;backdrop-filter:blur(2px);}
+.strip .sn{font-family:'Oswald';font-weight:700;font-size:30px;line-height:1;color:var(--gold);font-variant-numeric:tabular-nums;text-align:center;flex:0 0 auto;}
+.strip .sn small{display:block;font-family:'Space Mono';font-size:9px;color:var(--muted);letter-spacing:.12em;margin-top:4px;text-transform:uppercase;}
+.strip .sb{flex:1;}
+.strip .st{font-family:'Oswald';font-weight:600;font-size:14px;letter-spacing:.05em;text-transform:uppercase;margin-bottom:3px;}
+.strip .ss{font-size:13px;color:#a3a3aa;line-height:1.5;}
+
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation:none !important;transition:none !important;}
   .stat,.panel{opacity:1 !important;transform:none !important;}
@@ -120,6 +164,8 @@ body::after{content:'';position:fixed;inset:0;z-index:0;background:radial-gradie
   .act{border-left:none;border-top:1px solid var(--line-soft);padding-left:2px;}
   .act:first-child{border-top:none;}
   .week{grid-template-columns:repeat(4,1fr);}
+  .money{grid-template-columns:1fr;}
+  .mcol{border-right:none;border-bottom:1px solid var(--line-soft);}
   .day:nth-child(4n){border-right:none;}
   .day{border-bottom:1px solid var(--line-soft);}
   .headline{font-size:26px;}
@@ -149,130 +195,7 @@ body::after{content:'';position:fixed;inset:0;z-index:0;background:radial-gradie
   </div>
 
   <div id="view-brief">
-  <div class="headline">The <em>BDD exam</em> owns your morning, Manny. Clear it by 1:30 and the day opens up.</div>
-
-  <svg class="terrain" viewBox="0 0 840 170" fill="none">
-    <path d="M0 138 L60 132 C110 126 130 92 170 74 C210 56 250 52 300 56 C350 60 380 76 420 98 C460 120 520 138 580 142 C660 147 760 148 840 148"
-      stroke="#e8e6df" stroke-width="2" stroke-linecap="round"/>
-    <circle cx="196" cy="65" r="9" fill="#c9a227"/>
-    <g stroke="#c9a227" stroke-width="2" stroke-linecap="round">
-      <circle cx="700" cy="52" r="14" fill="#c9a227" stroke="none"/>
-      <path d="M700 24v9M700 71v9M672 52h9M719 52h9M680 32l6.5 6.5M720 72l-6.5-6.5M720 32l-6.5 6.5M680 72l6.5-6.5"/>
-    </g>
-    <text x="196" y="42" text-anchor="middle" font-family="Space Mono" font-size="10" fill="#c9a227" letter-spacing="1">BDD 8:30A</text>
-  </svg>
-
-  <div class="acts">
-    <div class="act"><div class="t">8:30 AM – 1:30 PM</div>
-      <p>One thing on the books and it is the big one. The BDD claim appointment takes the whole morning.</p></div>
-    <div class="act"><div class="t">1:30 – 6 PM</div>
-      <p>Open after the exam. The evidence maps for all 19 conditions close out today, buddy statement requests included.</p></div>
-    <div class="act"><div class="t">6 PM ONWARD</div>
-      <p>Clear night around 79. The heavy rain holds off until the weekend.</p></div>
-  </div>
-
-  <div class="grid">
-    <div class="stat"><div class="k">Meetings Today</div><div class="v">1</div><div class="d">BDD claim appointment</div></div>
-    <div class="stat"><div class="k">Needs You</div><div class="v">8</div><div class="d">2 money items lead</div></div>
-    <div class="stat"><div class="k">Promos Swept</div><div class="v">45</div><div class="d">inbox to Promos label</div></div>
-    <div class="stat"><div class="k">Today's High</div><div class="v">90°</div><div class="d">storm risk 40% late day</div></div>
-  </div>
-
-  <div class="panel">
-    <h2>Needs Attention</h2>
-
-    <div class="row" data-thread="19f921895f46762d" data-title="Robinhood margin maintenance call">
-      <div class="ck" role="button" tabindex="0" aria-label="Archive this email"><svg viewBox="0 0 16 16"><path d="M2.5 8.5l3.5 3.5 7-8"/></svg></div>
-      <div class="body"><div class="rt">Robinhood issued a margin maintenance call</div>
-      <div class="rs">Hit your individual account ending 9755 last night at 11:08. The notice says immediate action required. Check the app before the market closes.</div>
-      <div class="cknote">Could not queue the archive. Tap again to retry.</div></div>
-      <span class="tag">MONEY</span>
-    </div>
-
-    <div class="row" data-thread="19f91f5f1f021f13" data-title="ehr.gov records summary ready">
-      <div class="ck" role="button" tabindex="0" aria-label="Archive this email"><svg viewBox="0 0 16 16"><path d="M2.5 8.5l3.5 3.5 7-8"/></svg></div>
-      <div class="body"><div class="rt">Your medical records summary is ready</div>
-      <div class="rs">ehr.gov posted the requested summary for download last night. Useful paper for today's exam if you can grab it before 8:30.</div>
-      <div class="cknote">Could not queue the archive. Tap again to retry.</div></div>
-      <span class="tag">MEDICAL</span>
-    </div>
-
-    <div class="row">
-      <div class="ck" style="visibility:hidden"></div>
-      <div class="body"><div class="rt">SHA Part A sitting 1 starts Monday</div>
-      <div class="rs">On your calendar for the week. 16 pages and 386 fields, sitting 1 of 3, and it must be done before the Part B clinical exam.</div></div>
-      <span class="tag">PREP</span>
-    </div>
-
-    <div class="row" data-thread="19f80774d8a07010" data-title="Jobber request from JoAnn Stumpfhauser">
-      <div class="ck" role="button" tabindex="0" aria-label="Archive this email"><svg viewBox="0 0 16 16"><path d="M2.5 8.5l3.5 3.5 7-8"/></svg></div>
-      <div class="body"><div class="rt">JoAnn Stumpfhauser sent a new Jobber request</div>
-      <div class="rs">Came in Monday from Rockledge. Ms. Jo Ann is on your calendar Saturday at 11 AM so confirm the visit covers it.</div>
-      <div class="cknote">Could not queue the archive. Tap again to retry.</div></div>
-      <span class="tag">HONEYDONE</span>
-    </div>
-
-    <div class="row" data-thread="19f914ff498a5de2" data-title="Google security alerts new sign-ins">
-      <div class="ck" role="button" tabindex="0" aria-label="Archive this email"><svg viewBox="0 0 16 16"><path d="M2.5 8.5l3.5 3.5 7-8"/></svg></div>
-      <div class="body"><div class="rt">Four new sign-ins on your Google accounts</div>
-      <div class="rs">Windows and your new fold phone, last night through 5:40 this morning. They line up with the new device setup email. A ten second glance confirms they were you.</div>
-      <div class="cknote">Could not queue the archive. Tap again to retry.</div></div>
-      <span class="tag">SECURITY</span>
-    </div>
-
-    <div class="row" data-thread="19f850db73b503a4" data-title="FPL bill ready $383.94">
-      <div class="ck" role="button" tabindex="0" aria-label="Archive this email"><svg viewBox="0 0 16 16"><path d="M2.5 8.5l3.5 3.5 7-8"/></svg></div>
-      <div class="body"><div class="rt">FPL bill is ready, $383.94</div>
-      <div class="rs">Posted Tuesday. Auto pay handles it, this is just the number so it does not surprise you. Chase card payment is due Tuesday too.</div>
-      <div class="cknote">Could not queue the archive. Tap again to retry.</div></div>
-      <span class="tag">BILL</span>
-    </div>
-
-    <div class="row" data-thread="19f713d89e72e08e" data-title="Step Up For Students final deadline">
-      <div class="ck" role="button" tabindex="0" aria-label="Archive this email"><svg viewBox="0 0 16 16"><path d="M2.5 8.5l3.5 3.5 7-8"/></svg></div>
-      <div class="body"><div class="rt">Step Up For Students final deadline notice</div>
-      <div class="rs">Last call on 2025 to 26 funding inquiries for the scholarship account. Worth opening once before it closes for good.</div>
-      <div class="cknote">Could not queue the archive. Tap again to retry.</div></div>
-      <span class="tag">SCHOOL</span>
-    </div>
-
-    <div class="row" data-thread="19f70978c32108ee" data-title="OLL lunch pre-orders open">
-      <div class="ck" role="button" tabindex="0" aria-label="Archive this email"><svg viewBox="0 0 16 16"><path d="M2.5 8.5l3.5 3.5 7-8"/></svg></div>
-      <div class="body"><div class="rt">OLL lunch pre-orders are open</div>
-      <div class="rs">The Lourdes lunch calendars are posted and aftercare updates came with them. Ten minutes of clicking saves a month of packed lunch scrambles.</div>
-      <div class="cknote">Could not queue the archive. Tap again to retry.</div></div>
-      <span class="tag">SCHOOL</span>
-    </div>
-  </div>
-
-  <div class="panel">
-    <h2>Resolved</h2>
-    <div class="row"><div class="ck" style="visibility:hidden"></div><div class="body"><div class="rt">Five checked-off threads got archived this morning</div>
-      <div class="rs">MHS Genesis lab results, YouTube Premium ending notice, Milwaukee verification, the Amex credit limit letter and the Navy Federal returned item notice. All out of the inbox.</div></div><span class="tag grn">DONE</span></div>
-    <div class="row"><div class="ck" style="visibility:hidden"></div><div class="body"><div class="rt">Citi Flex Pay is paid off</div>
-      <div class="rs">Citi confirmed Tuesday the plan on the card ending 4162 is done.</div></div><span class="tag grn">DONE</span></div>
-    <div class="row"><div class="ck" style="visibility:hidden"></div><div class="body"><div class="rt">Ken Febles quote went out</div>
-      <div class="rs">The HoneyDone quote copy landed Monday. $2,225 with the max price guarantee language.</div></div><span class="tag grn">SENT</span></div>
-    <div class="row"><div class="ck" style="visibility:hidden"></div><div class="body"><div class="rt">Angelleta Gayle canceled her request</div>
-      <div class="rs">The Palm Bay furniture assembly job pulled out Tuesday. No action needed.</div></div><span class="tag grn">CLOSED</span></div>
-    <div class="row"><div class="ck" style="visibility:hidden"></div><div class="body"><div class="rt">SoFi took the loan payment</div>
-      <div class="rs">$1,918.55 processed on the 17th. The loan stays on track.</div></div><span class="tag grn">PAID</span></div>
-    <div class="row"><div class="ck" style="visibility:hidden"></div><div class="body"><div class="rt">Milwaukee tool is in the service pipeline</div>
-      <div class="rs">Service order confirmed Tuesday. The tool shows in transit to the repair hub.</div></div><span class="tag grn">TRACKED</span></div>
-  </div>
-
-  <div class="panel">
-    <h2>Week Ahead</h2>
-    <div class="week">
-      <div class="day"><div class="dn">Fri 24</div><div class="ic">⛅</div><div class="hi">90°</div><div class="lo">79°</div><div class="rn">40%</div><br><span class="ev">BDD EXAM</span></div>
-      <div class="day"><div class="dn">Sat 25</div><div class="ic">⛈️</div><div class="hi">90°</div><div class="lo">77°</div><div class="rn">90%</div><br><span class="ev">MS. JO ANN 11A</span></div>
-      <div class="day"><div class="dn">Sun 26</div><div class="ic">🌧️</div><div class="hi">90°</div><div class="lo">77°</div><div class="rn">100%</div></div>
-      <div class="day"><div class="dn">Mon 27</div><div class="ic">⛈️</div><div class="hi">90°</div><div class="lo">75°</div><div class="rn">90%</div><br><span class="ev">SHA PART A</span></div>
-      <div class="day"><div class="dn">Tue 28</div><div class="ic">🌦️</div><div class="hi">90°</div><div class="lo">75°</div><div class="rn">70%</div><br><span class="ev">CHASE PMT DUE</span></div>
-      <div class="day"><div class="dn">Wed 29</div><div class="ic">🌦️</div><div class="hi">91°</div><div class="lo">77°</div><div class="rn">60%</div></div>
-      <div class="day"><div class="dn">Thu 30</div><div class="ic">☀️</div><div class="hi">90°</div><div class="lo">75°</div><div class="rn">10%</div></div>
-    </div>
-  </div>
+__BRIEF_BODY__
   </div>
 
   <div id="view-workout" hidden>
