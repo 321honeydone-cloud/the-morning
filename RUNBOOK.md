@@ -104,3 +104,39 @@ records, the claim, credentials, or account numbers.
 Still no Jobber calendar on the account. Until an iCal feed is wired in, jobs come only
 from Jobber notification emails and customer replies, and any job named in the brief says
 so once.
+
+## Calendar accounts (corrected 2026-08-20)
+
+The Google Calendar connector is authenticated as **mrivero24@gmail.com**, not
+321honeydone@gmail.com. Call list_calendars every run and read every calendar returned.
+The ones that matter:
+
+- `mrivero24@gmail.com` primary: personal appointments, recurring bills, meetings
+- `s1pr4fei8rnfrl98o6hi3043m6rdsgog@import.calendar.google.com`: **the Jobber feed.** Its
+  summary is the raw getjobber.com iCal URL. Every HoneyDone job lives here with the client
+  name in the title, the address in `location`, and the scope in `description`. This is
+  priority one, per the Jobber section above. Do not try to fetch the getjobber.com URL
+  directly, it is blocked by robots.txt. Read it through the Google calendar id.
+- `family17388733884721953521@group.calendar.google.com`: family and school events
+- `en.usa#holiday`, `NCOA 22-3`, `en.uk#holiday`: ignore unless something lands on them
+
+Known gap: events created on 321honeydone@gmail.com with no attendees are invisible from
+this account. The BDD final packet review block (Aug 24 to 28) is one of them, so it is
+carried in the VA CLAIM panel from the RUNBOOK rather than read off a calendar. If Manny
+shares the 321honeydone calendar with mrivero24, drop this workaround.
+
+## JOB PREP panel
+
+Renders when a Jobber job falls today or tomorrow, placed directly under Needs Attention.
+Header line carries time window, client, address, job value if known, and scope. Three
+columns of locally-checkable items: Buy or Confirm Loaded, Tools Beyond the Bag, Sequence
+and Gotchas. Build them from `jobs/checklists.json` by matching the Jobber job title
+against each entry's `match` keywords, then subtract anything listed in `jobs/edc.json`.
+While `edc.json` has `recorded: false`, render the full list and say so in the footer note.
+Checkbox state is localStorage only under key `mb_job` and never touches the network. Add a
+gotcha line naming the next job on the calendar so nothing bleeds into it.
+
+## Google search bar
+
+The page is Manny's browser homepage. The chassis carries a plain GET form to
+google.com/search above the tabs. It needs no JS, no key, and no upkeep. Leave it in place.

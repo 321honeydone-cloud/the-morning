@@ -153,6 +153,33 @@ body::after{content:'';position:fixed;inset:0;z-index:0;background:radial-gradie
 .strip .st{font-family:'Oswald';font-weight:600;font-size:14px;letter-spacing:.05em;text-transform:uppercase;margin-bottom:3px;}
 .strip .ss{font-size:13px;color:#a3a3aa;line-height:1.5;}
 
+/* google search bar, this page doubles as a homepage */
+.gsearch{display:flex;align-items:stretch;gap:0;border:1px solid var(--line);background:var(--card);backdrop-filter:blur(2px);margin:0 0 22px;transition:border-color .2s ease,box-shadow .2s ease;}
+.gsearch:focus-within{border-color:var(--gold);box-shadow:0 0 0 1px rgba(201,162,39,.25);}
+.gsearch .gi{display:grid;place-items:center;padding:0 14px;flex:0 0 auto;}
+.gsearch .gi svg{width:16px;height:16px;stroke:var(--gold);fill:none;stroke-width:2;}
+.gsearch input{flex:1;background:transparent;border:none;outline:none;color:#fff;font-family:'Barlow',sans-serif;font-size:15px;padding:13px 0;min-width:0;}
+.gsearch input::placeholder{color:#5d5d64;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;}
+.gsearch button{font-family:'Oswald',sans-serif;font-weight:600;font-size:12px;letter-spacing:.08em;text-transform:uppercase;background:var(--gold);color:#0a0a0c;border:none;padding:0 20px;cursor:pointer;flex:0 0 auto;}
+.gsearch button:hover{background:var(--gold-bright);}
+
+/* job prep checklist */
+.prep{display:grid;grid-template-columns:1fr 1fr 1fr;}
+.pcol{border-right:1px solid var(--line-soft);padding-bottom:12px;}
+.pcol:last-child{border-right:none;}
+.pcol h3{font-family:'Space Mono';font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);padding:13px 18px 9px;}
+.pitem{display:flex;align-items:flex-start;gap:11px;padding:7px 18px;font-size:13.5px;color:#c4c4ca;line-height:1.45;cursor:pointer;transition:color .2s ease;}
+.pitem:hover{color:#fff;}
+.chk{flex:0 0 auto;width:15px;height:15px;margin-top:2px;border:2px solid var(--gold);display:grid;place-items:center;}
+.chk svg{width:10px;height:10px;opacity:0;transition:opacity .15s ease;}
+.chk svg path{stroke:#0a0a0c;stroke-width:3.5;fill:none;stroke-linecap:square;}
+.pitem.on .chk{background:var(--gold);}
+.pitem.on .chk svg{opacity:1;}
+.pitem.on span{opacity:.45;text-decoration:line-through;}
+.jobmeta{font-family:'Space Mono';font-size:10.5px;color:var(--gold);letter-spacing:.06em;padding:13px 18px 0;line-height:1.7;text-transform:uppercase;}
+.jobmeta b{color:#fff;font-weight:400;}
+.prepnote{font-size:12.5px;color:var(--muted);padding:12px 18px 14px;border-top:1px solid var(--line-soft);margin-top:8px;line-height:1.5;}
+
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation:none !important;transition:none !important;}
   .stat,.panel{opacity:1 !important;transform:none !important;}
@@ -165,6 +192,8 @@ body::after{content:'';position:fixed;inset:0;z-index:0;background:radial-gradie
   .act:first-child{border-top:none;}
   .week{grid-template-columns:repeat(4,1fr);}
   .money{grid-template-columns:1fr;}
+  .prep{grid-template-columns:1fr;}
+  .pcol{border-right:none;border-bottom:1px solid var(--line-soft);}
   .mcol{border-right:none;border-bottom:1px solid var(--line-soft);}
   .day:nth-child(4n){border-right:none;}
   .day{border-bottom:1px solid var(--line-soft);}
@@ -188,6 +217,12 @@ body::after{content:'';position:fixed;inset:0;z-index:0;background:radial-gradie
     </div>
     <div class="status">FRIDAY · JULY 24 2026<br>MELBOURNE FL · 79°F AT DAWN</div>
   </div>
+
+  <form class="gsearch" action="https://www.google.com/search" method="get" role="search">
+    <span class="gi"><svg viewBox="0 0 24 24" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M16.5 16.5L21 21"/></svg></span>
+    <input type="text" name="q" placeholder="Search Google" autocomplete="off" aria-label="Search Google">
+    <button type="submit">Go</button>
+  </form>
 
   <div class="tabs">
     <button class="tabbtn on" data-view="brief">Brief</button>
@@ -425,6 +460,25 @@ __BRIEF_BODY__
       d.exercises.map(function(ex){ return "<li>" + ex.name + "<span>" + ex.target + "</span></li>"; }).join("") + "</ul>";
     weekHost.appendChild(box);
   });
+
+  // job prep checklist, local only, never touches the network
+  (function(){
+    var K = "mb_job";
+    var st; try{ st = JSON.parse(localStorage.getItem(K)||"{}"); }catch(e){ st = {}; }
+    var items = document.querySelectorAll(".pitem");
+    items.forEach(function(el){
+      var id = el.getAttribute("data-k");
+      if(st[id]) el.classList.add("on");
+      el.addEventListener("click", function(){
+        el.classList.toggle("on");
+        st[id] = el.classList.contains("on");
+        try{ localStorage.setItem(K, JSON.stringify(st)); }catch(e){}
+      });
+    });
+    var box = document.querySelector(".gsearch input");
+    if(box && window.innerWidth > 900 && !("ontouchstart" in window)) box.focus();
+  })();
+
 })();
 </script>
 </body>
