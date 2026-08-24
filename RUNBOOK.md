@@ -133,7 +133,13 @@ columns of locally-checkable items: Buy or Confirm Loaded, Tools Beyond the Bag,
 and Gotchas. Build them from `jobs/checklists.json` by matching the Jobber job title
 against each entry's `match` keywords, then subtract anything listed in `jobs/edc.json`.
 While `edc.json` has `recorded: false`, render the full list and say so in the footer note.
-Checkbox state is localStorage only under key `mb_job` and never touches the network. Add a
+Checkbox state is localStorage only and never touches the network. It is keyed per JOB, not
+per day. The build stamps `data-job="<12 hex>"` on the `.prep` div, hashed from the Jobber
+job title plus its location with no date in it, and ticks are stored under
+`mb_job:<that key>`. On load the page removes every other key starting with `mb_job`, so a
+two day job keeps its ticks across both days while a brand new job always opens a clean
+card. Every `.pitem` MUST carry a unique `data-k`. Without it all items share one bucket and
+ticking a single box makes the whole card come back checked. Add a
 gotcha line naming the next job on the calendar so nothing bleeds into it.
 
 ## Google search bar
