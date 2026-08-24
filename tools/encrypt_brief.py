@@ -74,8 +74,16 @@ async function deriveKey(pin){
 }
 async function tryDecrypt(key){
   const pt = await crypto.subtle.decrypt({name:"AES-GCM", iv:b64(DATA.iv)}, key, b64(DATA.ct));
-  const blob = new Blob([pt], {type:"text/html"});
-  location.replace(URL.createObjectURL(blob));
+  let html = new TextDecoder().decode(pt);
+  html = html.replace(/<head([^>]*)>/i, '<head$1><base target="_blank">');
+  document.title = "Morning brief";
+  const frame = document.createElement("iframe");
+  frame.style.cssText = "position:fixed;inset:0;width:100%;height:100%;border:0;background:#0a0a0c";
+  document.body.innerHTML = "";
+  document.body.style.overflow = "hidden";
+  document.body.style.background = "#0a0a0c";
+  document.body.appendChild(frame);
+  frame.srcdoc = html;
 }
 async function unlock(){
   const pin = document.getElementById("pin").value.trim();
