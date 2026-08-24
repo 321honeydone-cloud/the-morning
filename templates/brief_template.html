@@ -461,23 +461,35 @@ __BRIEF_BODY__
     weekHost.appendChild(box);
   });
 
-  // job prep checklist, local only, never touches the network
+  // job prep checklist, local only, never touches the network.
+  // State is scoped to the JOB, not the day, so a two day job keeps its ticks
+  // and a brand new job always starts from a clean card.
   (function(){
-    var K = "mb_job";
+    var prep = document.querySelector(".prep");
+    if(!prep) return;
+    var K = "mb_job:" + (prep.getAttribute("data-job") || "unknown");
+    // Drop state belonging to any other job, including the old unscoped key.
+    try{
+      for(var i = localStorage.length - 1; i >= 0; i--){
+        var k = localStorage.key(i);
+        if(k && k.indexOf("mb_job") === 0 && k !== K) localStorage.removeItem(k);
+      }
+    }catch(e){}
     var st; try{ st = JSON.parse(localStorage.getItem(K)||"{}"); }catch(e){ st = {}; }
-    var items = document.querySelectorAll(".pitem");
-    items.forEach(function(el){
-      var id = el.getAttribute("data-k");
-      if(st[id]) el.classList.add("on");
+    var items = prep.querySelectorAll(".pitem");
+    items.forEach(function(el, i){
+      var id = el.getAttribute("data-k") || ("i" + i);
+      if(st[id] === true) el.classList.add("on");
       el.addEventListener("click", function(){
         el.classList.toggle("on");
         st[id] = el.classList.contains("on");
         try{ localStorage.setItem(K, JSON.stringify(st)); }catch(e){}
       });
     });
-    var box = document.querySelector(".gsearch input");
-    if(box && window.innerWidth > 900 && !("ontouchstart" in window)) box.focus();
   })();
+
+  var gbox = document.querySelector(".gsearch input");
+  if(gbox && window.innerWidth > 900 && !("ontouchstart" in window)) gbox.focus();
 
 })();
 </script>
