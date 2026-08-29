@@ -3,7 +3,11 @@
   "types": [
     {
       "id": "shower-door",
-      "match": ["shower door", "shower enclosure", "tub door"],
+      "match": [
+        "shower door",
+        "shower enclosure",
+        "tub door"
+      ],
       "label": "Shower door replacement",
       "buy": [
         "The door unit, measured against the opening before leaving the house",
@@ -32,7 +36,13 @@
     },
     {
       "id": "patio-coating",
-      "match": ["floor coating", "patio floor", "resurface", "anti-slip", "anti slip"],
+      "match": [
+        "floor coating",
+        "patio floor",
+        "resurface",
+        "anti-slip",
+        "anti slip"
+      ],
       "label": "Patio floor coating and resurface",
       "buy": [
         "Coating and anti-slip additive, enough for the measured square footage plus 15 percent",
@@ -59,7 +69,13 @@
     },
     {
       "id": "vinyl-flooring",
-      "match": ["vinyl floor", "linoleum", "lvp", "plank floor", "flooring"],
+      "match": [
+        "vinyl floor",
+        "linoleum",
+        "lvp",
+        "plank floor",
+        "flooring"
+      ],
       "label": "Flooring removal and install",
       "buy": [
         "Planks plus 10 percent waste, same lot number",
@@ -84,7 +100,11 @@
     },
     {
       "id": "cabinet",
-      "match": ["cabinet", "kitchen interior", "vanity"],
+      "match": [
+        "cabinet",
+        "kitchen interior",
+        "vanity"
+      ],
       "label": "Cabinet and interior install",
       "buy": [
         "Cabinet screws, not drywall screws",
@@ -107,7 +127,12 @@
     },
     {
       "id": "door",
-      "match": ["door replacement", "exterior door", "interior door", "doors"],
+      "match": [
+        "door replacement",
+        "exterior door",
+        "interior door",
+        "doors"
+      ],
       "label": "Door replacement",
       "buy": [
         "The slab or prehung unit, hinge hand confirmed",
@@ -125,6 +150,45 @@
         "Confirm the swing and hand with the client before demo, not after",
         "Never leave an exterior opening unsecured at end of day",
         "Foam sets slow, plan the lockset install around it"
+      ]
+    },
+    {
+      "id": "yard-detail",
+      "match": [
+        "hedge trim",
+        "hedge",
+        "bird bath",
+        "birdbath",
+        "edging",
+        "mulch",
+        "shrub",
+        "landscap",
+        "yard detail",
+        "trim and edge"
+      ],
+      "label": "Yard detail. Hedge, edge, anchor",
+      "buy": [
+        "Fast setting concrete, one bag, for the bird bath base",
+        "Landscape spikes or rebar pins for the edging line",
+        "Contractor bags and a tarp for the hedge clippings",
+        "Fresh string for the trimmer head",
+        "Blade lube and a can of resin remover for the hedge shears"
+      ],
+      "tools": [
+        "Hedge trimmer plus a hand shear for the tight spots",
+        "String trimmer and edger",
+        "Backpack or handheld blower",
+        "Level and a rubber mallet for setting the bath",
+        "Flat shovel and a hand tamper",
+        "Wheelbarrow or a bin for hauling clippings",
+        "Eye protection, ear pro, gloves"
+      ],
+      "site": [
+        "Photo the hedge line and the bird bath before anything moves, that is the before shot",
+        "Set the bird bath level and plumb before the concrete grabs, you get one shot",
+        "Edge first, then trim, then blow everything down last so you clean once",
+        "Clippings ride out with you, do not leave a pile at the curb unless the client asked",
+        "Florida afternoon storms roll in after 11, get the concrete set in the morning"
       ]
     }
   ]
