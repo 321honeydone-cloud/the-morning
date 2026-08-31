@@ -1,195 +1,232 @@
 {
-  "_note": "Job type templates. The pipeline matches a Jobber job title against `match` keywords (lowercase, any hit wins, longest match preferred) and renders the JOB PREP panel from the winning entry. `buy` is the Home Depot or supplier run. `tools` is gear beyond the EDC bag. `site` is sequence and gotchas. Subtract anything already in jobs/edc.json before rendering.",
-  "types": [
-    {
-      "id": "shower-door",
-      "match": [
-        "shower door",
-        "shower enclosure",
-        "tub door"
-      ],
-      "label": "Shower door replacement",
-      "buy": [
-        "The door unit, measured against the opening before leaving the house",
-        "100% silicone, clear, mildew resistant, 2 tubes",
-        "Wall anchors rated for the frame, plus plastic shims",
-        "Carbide or diamond bit if anchoring into tile",
-        "Silicone remover and fresh razor scraper blades",
-        "Isopropyl for the track bed",
-        "Contractor bags rated for glass"
-      ],
-      "tools": [
-        "4 ft level and torpedo level",
-        "Hacksaw or angle grinder for cutting track to width",
-        "Shop vac",
-        "Glass suction cups",
-        "Cut resistant gloves and safety glasses",
-        "Knee pads",
-        "Cardboard or moving blanket to protect the pan"
-      ],
-      "site": [
-        "Photo the old door before demo, that is the before shot",
-        "Dry fit the track and check level before a single hole gets drilled",
-        "Silicone cures 24 hours, tell the client in person that the shower is out until tomorrow morning",
-        "Haul away means a dump run, check the hours before promising an end time"
-      ]
-    },
-    {
-      "id": "patio-coating",
-      "match": [
-        "floor coating",
-        "patio floor",
-        "resurface",
-        "anti-slip",
-        "anti slip"
-      ],
-      "label": "Patio floor coating and resurface",
-      "buy": [
-        "Coating and anti-slip additive, enough for the measured square footage plus 15 percent",
-        "Concrete degreaser and etcher",
-        "Crack filler and patch compound",
-        "Painter's tape and masking film for walls and posts",
-        "Roller covers rated for the coating, plus spare",
-        "Respirator cartridges if the product calls for them"
-      ],
-      "tools": [
-        "Pressure washer with surface cleaner attachment",
-        "Stiff deck brush and squeegee",
-        "Extension pole and roller frame",
-        "Grinder with a cup wheel for any high spots",
-        "Moisture meter or a plastic sheet for the tape test",
-        "Box fan for cure airflow"
-      ],
-      "site": [
-        "Run the moisture test the day before, a slab that reads wet kills the whole job",
-        "Watch the radar. Coating plus a Florida afternoon storm is a redo",
-        "Two day job on the calendar means day one is prep and day two is coat, do not compress it",
-        "Tell the client the cure window and when furniture can come back"
-      ]
-    },
-    {
-      "id": "vinyl-flooring",
-      "match": [
-        "vinyl floor",
-        "linoleum",
-        "lvp",
-        "plank floor",
-        "flooring"
-      ],
-      "label": "Flooring removal and install",
-      "buy": [
-        "Planks plus 10 percent waste, same lot number",
-        "Underlayment if the spec calls for it",
-        "Transition strips and quarter round",
-        "Fresh utility blades and a spare oscillating blade",
-        "Leveling compound for any dips"
-      ],
-      "tools": [
-        "Floor scraper and pry bars",
-        "Oscillating multi tool for door jambs",
-        "Tapping block, pull bar, spacers",
-        "Miter saw and table saw",
-        "Shop vac and a long straightedge"
-      ],
-      "site": [
-        "Acclimate the planks in the room, check the manufacturer window",
-        "Check subfloor flat before anything gets laid",
-        "Undercut the jambs, do not scribe the plank",
-        "Haul away the old floor same day, it takes more truck space than it looks"
-      ]
-    },
-    {
-      "id": "cabinet",
-      "match": [
-        "cabinet",
-        "kitchen interior",
-        "vanity"
-      ],
-      "label": "Cabinet and interior install",
-      "buy": [
-        "Cabinet screws, not drywall screws",
-        "Shims and filler strips",
-        "Touch up marker matched to the finish",
-        "Hardware and jig if pulls are in scope"
-      ],
-      "tools": [
-        "Stud finder and a long level",
-        "Cabinet clamps",
-        "Ledger board stock and screws",
-        "Drill and impact with a full bit set",
-        "Track saw or circular saw with a guide for scribing"
-      ],
-      "site": [
-        "Find and mark every stud before the first cabinet goes up",
-        "Set the high point of the floor first, everything references off it",
-        "Photo inside the wall before it closes up"
-      ]
-    },
-    {
-      "id": "door",
-      "match": [
-        "door replacement",
-        "exterior door",
-        "interior door",
-        "doors"
-      ],
-      "label": "Door replacement",
-      "buy": [
-        "The slab or prehung unit, hinge hand confirmed",
-        "Shims, low expansion foam, exterior caulk",
-        "Weatherstrip and threshold if exterior",
-        "Lockset and strike plate with 3 inch screws"
-      ],
-      "tools": [
-        "Reciprocating saw",
-        "6 ft level",
-        "Chisel set for hinge mortises",
-        "Router with hinge template if mortising fresh"
-      ],
-      "site": [
-        "Confirm the swing and hand with the client before demo, not after",
-        "Never leave an exterior opening unsecured at end of day",
-        "Foam sets slow, plan the lockset install around it"
-      ]
-    },
-    {
-      "id": "yard-detail",
-      "match": [
-        "hedge trim",
-        "hedge",
-        "bird bath",
-        "birdbath",
-        "edging",
-        "mulch",
-        "shrub",
-        "landscap",
-        "yard detail",
-        "trim and edge"
-      ],
-      "label": "Yard detail. Hedge, edge, anchor",
-      "buy": [
-        "Fast setting concrete, one bag, for the bird bath base",
-        "Landscape spikes or rebar pins for the edging line",
-        "Contractor bags and a tarp for the hedge clippings",
-        "Fresh string for the trimmer head",
-        "Blade lube and a can of resin remover for the hedge shears"
-      ],
-      "tools": [
-        "Hedge trimmer plus a hand shear for the tight spots",
-        "String trimmer and edger",
-        "Backpack or handheld blower",
-        "Level and a rubber mallet for setting the bath",
-        "Flat shovel and a hand tamper",
-        "Wheelbarrow or a bin for hauling clippings",
-        "Eye protection, ear pro, gloves"
-      ],
-      "site": [
-        "Photo the hedge line and the bird bath before anything moves, that is the before shot",
-        "Set the bird bath level and plumb before the concrete grabs, you get one shot",
-        "Edge first, then trim, then blow everything down last so you clean once",
-        "Clippings ride out with you, do not leave a pile at the curb unless the client asked",
-        "Florida afternoon storms roll in after 11, get the concrete set in the morning"
-      ]
-    }
-  ]
+ "_note": "Job type templates. The pipeline matches a Jobber job title against `match` keywords (lowercase, any hit wins, longest match preferred) and renders the JOB PREP panel from the winning entry. `buy` is the Home Depot or supplier run. `tools` is gear beyond the EDC bag. `site` is sequence and gotchas. Subtract anything already in jobs/edc.json before rendering.",
+ "types": [
+  {
+   "id": "shower-door",
+   "match": [
+    "shower door",
+    "shower enclosure",
+    "tub door"
+   ],
+   "label": "Shower door replacement",
+   "buy": [
+    "The door unit, measured against the opening before leaving the house",
+    "100% silicone, clear, mildew resistant, 2 tubes",
+    "Wall anchors rated for the frame, plus plastic shims",
+    "Carbide or diamond bit if anchoring into tile",
+    "Silicone remover and fresh razor scraper blades",
+    "Isopropyl for the track bed",
+    "Contractor bags rated for glass"
+   ],
+   "tools": [
+    "4 ft level and torpedo level",
+    "Hacksaw or angle grinder for cutting track to width",
+    "Shop vac",
+    "Glass suction cups",
+    "Cut resistant gloves and safety glasses",
+    "Knee pads",
+    "Cardboard or moving blanket to protect the pan"
+   ],
+   "site": [
+    "Photo the old door before demo, that is the before shot",
+    "Dry fit the track and check level before a single hole gets drilled",
+    "Silicone cures 24 hours, tell the client in person that the shower is out until tomorrow morning",
+    "Haul away means a dump run, check the hours before promising an end time"
+   ]
+  },
+  {
+   "id": "patio-coating",
+   "match": [
+    "floor coating",
+    "patio floor",
+    "resurface",
+    "anti-slip",
+    "anti slip"
+   ],
+   "label": "Patio floor coating and resurface",
+   "buy": [
+    "Coating and anti-slip additive, enough for the measured square footage plus 15 percent",
+    "Concrete degreaser and etcher",
+    "Crack filler and patch compound",
+    "Painter's tape and masking film for walls and posts",
+    "Roller covers rated for the coating, plus spare",
+    "Respirator cartridges if the product calls for them"
+   ],
+   "tools": [
+    "Pressure washer with surface cleaner attachment",
+    "Stiff deck brush and squeegee",
+    "Extension pole and roller frame",
+    "Grinder with a cup wheel for any high spots",
+    "Moisture meter or a plastic sheet for the tape test",
+    "Box fan for cure airflow"
+   ],
+   "site": [
+    "Run the moisture test the day before, a slab that reads wet kills the whole job",
+    "Watch the radar. Coating plus a Florida afternoon storm is a redo",
+    "Two day job on the calendar means day one is prep and day two is coat, do not compress it",
+    "Tell the client the cure window and when furniture can come back"
+   ]
+  },
+  {
+   "id": "vinyl-flooring",
+   "match": [
+    "vinyl floor",
+    "linoleum",
+    "lvp",
+    "plank floor",
+    "flooring"
+   ],
+   "label": "Flooring removal and install",
+   "buy": [
+    "Planks plus 10 percent waste, same lot number",
+    "Underlayment if the spec calls for it",
+    "Transition strips and quarter round",
+    "Fresh utility blades and a spare oscillating blade",
+    "Leveling compound for any dips"
+   ],
+   "tools": [
+    "Floor scraper and pry bars",
+    "Oscillating multi tool for door jambs",
+    "Tapping block, pull bar, spacers",
+    "Miter saw and table saw",
+    "Shop vac and a long straightedge"
+   ],
+   "site": [
+    "Acclimate the planks in the room, check the manufacturer window",
+    "Check subfloor flat before anything gets laid",
+    "Undercut the jambs, do not scribe the plank",
+    "Haul away the old floor same day, it takes more truck space than it looks"
+   ]
+  },
+  {
+   "id": "cabinet",
+   "match": [
+    "cabinet",
+    "kitchen interior",
+    "vanity"
+   ],
+   "label": "Cabinet and interior install",
+   "buy": [
+    "Cabinet screws, not drywall screws",
+    "Shims and filler strips",
+    "Touch up marker matched to the finish",
+    "Hardware and jig if pulls are in scope"
+   ],
+   "tools": [
+    "Stud finder and a long level",
+    "Cabinet clamps",
+    "Ledger board stock and screws",
+    "Drill and impact with a full bit set",
+    "Track saw or circular saw with a guide for scribing"
+   ],
+   "site": [
+    "Find and mark every stud before the first cabinet goes up",
+    "Set the high point of the floor first, everything references off it",
+    "Photo inside the wall before it closes up"
+   ]
+  },
+  {
+   "id": "door",
+   "match": [
+    "door replacement",
+    "exterior door",
+    "interior door",
+    "doors"
+   ],
+   "label": "Door replacement",
+   "buy": [
+    "The slab or prehung unit, hinge hand confirmed",
+    "Shims, low expansion foam, exterior caulk",
+    "Weatherstrip and threshold if exterior",
+    "Lockset and strike plate with 3 inch screws"
+   ],
+   "tools": [
+    "Reciprocating saw",
+    "6 ft level",
+    "Chisel set for hinge mortises",
+    "Router with hinge template if mortising fresh"
+   ],
+   "site": [
+    "Confirm the swing and hand with the client before demo, not after",
+    "Never leave an exterior opening unsecured at end of day",
+    "Foam sets slow, plan the lockset install around it"
+   ]
+  },
+  {
+   "id": "yard-detail",
+   "match": [
+    "hedge trim",
+    "hedge",
+    "bird bath",
+    "birdbath",
+    "edging",
+    "mulch",
+    "shrub",
+    "landscap",
+    "yard detail",
+    "trim and edge"
+   ],
+   "label": "Yard detail. Hedge, edge, anchor",
+   "buy": [
+    "Fast setting concrete, one bag, for the bird bath base",
+    "Landscape spikes or rebar pins for the edging line",
+    "Contractor bags and a tarp for the hedge clippings",
+    "Fresh string for the trimmer head",
+    "Blade lube and a can of resin remover for the hedge shears"
+   ],
+   "tools": [
+    "Hedge trimmer plus a hand shear for the tight spots",
+    "String trimmer and edger",
+    "Backpack or handheld blower",
+    "Level and a rubber mallet for setting the bath",
+    "Flat shovel and a hand tamper",
+    "Wheelbarrow or a bin for hauling clippings",
+    "Eye protection, ear pro, gloves"
+   ],
+   "site": [
+    "Photo the hedge line and the bird bath before anything moves, that is the before shot",
+    "Set the bird bath level and plumb before the concrete grabs, you get one shot",
+    "Edge first, then trim, then blow everything down last so you clean once",
+    "Clippings ride out with you, do not leave a pile at the curb unless the client asked",
+    "Florida afternoon storms roll in after 11, get the concrete set in the morning"
+   ]
+  },
+  {
+   "id": "furniture-assembly",
+   "match": [
+    "assemble",
+    "assembly",
+    "desk",
+    "hutch",
+    "uline",
+    "furniture",
+    "shelving",
+    "workbench",
+    "bookcase"
+   ],
+   "label": "Flat pack furniture assembly",
+   "buy": [
+    "Nothing usually, the hardware ships in the box. Confirm the box count against the packing list before you leave the shop",
+    "Spare 1/4 inch cam locks and wood dowels in case one strips",
+    "Felt pads for the feet if it lands on a finished floor",
+    "Wall anchors and a short strap if the hutch needs an anti tip"
+   ],
+   "tools": [
+    "Impact driver with clutch dialed low, plus a full hex bit set",
+    "Full set of allen keys, metric and standard",
+    "Rubber mallet",
+    "4 ft level and torpedo level",
+    "Two clamps to hold panels square while you drive",
+    "Stud finder for the anti tip anchor",
+    "Moving blanket or flattened box to build on so you do not scuff panels"
+   ],
+   "site": [
+    "Photo the room before you open a single box, that is the before shot",
+    "Lay out and count every piece against the parts list first, a missing panel found at hour three costs the whole day",
+    "Build the desk on its back on a blanket, stand it up only once the frame is square",
+    "Hutch goes on last and gets anchored if there is any wall behind it",
+    "Break down and haul the cardboard, on base that means finding the dumpster before you start"
+   ]
+  }
+ ]
 }
