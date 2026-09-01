@@ -12,5 +12,79 @@
         }
       ]
     }
+  },
+  "2026-08-31": {
+    "db-fly": {
+      "exercise": "Flat dumbbell fly",
+      "entries": [
+        {
+          "weight": 10,
+          "sets": null,
+          "reps": null,
+          "raw": "completed with 10 lb all sets",
+          "source": "mic"
+        }
+      ]
+    },
+    "incline-db-press": {
+      "exercise": "Incline dumbbell press",
+      "entries": [
+        {
+          "weight": 20,
+          "sets": 3,
+          "reps": 12,
+          "raw": "20 lb three sets 12 reps on the first set and 15 reps on the last two",
+          "source": "mic"
+        }
+      ]
+    },
+    "one-arm-row": {
+      "exercise": "One arm dumbbell row",
+      "entries": [
+        {
+          "weight": 15,
+          "sets": 3,
+          "reps": 12,
+          "raw": "three sets of 12 with 15 lb dumbbells",
+          "source": "mic"
+        }
+      ]
+    },
+    "plank": {
+      "exercise": "Plank",
+      "entries": [
+        {
+          "weight": 45.0,
+          "sets": 3,
+          "reps": 45,
+          "raw": "three sets 45 seconds",
+          "source": "mic"
+        }
+      ]
+    },
+    "pulldown": {
+      "exercise": "Lat pulldown or band pulldown",
+      "entries": [
+        {
+          "weight": 30,
+          "sets": 3,
+          "reps": 12,
+          "raw": "three sets of 12 with 30 lb on each arm",
+          "source": "mic"
+        }
+      ]
+    },
+    "pushups": {
+      "exercise": "Push-ups",
+      "entries": [
+        {
+          "weight": 22,
+          "sets": null,
+          "reps": 15,
+          "raw": "first set of push-ups was 22nd set was 15 third set was 11",
+          "source": "mic"
+        }
+      ]
+    }
   }
 }
