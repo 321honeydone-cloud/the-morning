@@ -86,5 +86,154 @@
         }
       ]
     }
+  },
+  "2026-09-02": {
+    "calf-raises": {
+      "exercise": "Standing calf raises",
+      "entries": [
+        {
+          "weight": null,
+          "sets": null,
+          "reps": 20,
+          "raw": "first set 20 reps",
+          "source": "mic"
+        },
+        {
+          "weight": null,
+          "sets": null,
+          "reps": 20,
+          "raw": "20 on the second set",
+          "source": "mic"
+        },
+        {
+          "weight": null,
+          "sets": null,
+          "reps": 20,
+          "raw": "20 reps",
+          "source": "mic"
+        }
+      ]
+    },
+    "db-rdl": {
+      "exercise": "Dumbbell Romanian deadlift",
+      "entries": [
+        {
+          "weight": 15,
+          "sets": null,
+          "reps": 12,
+          "raw": "first said it was done with 15 lb on both arms and 12 reps",
+          "source": "mic"
+        },
+        {
+          "weight": 15,
+          "sets": null,
+          "reps": 12,
+          "raw": "another set of 12 with the 15 lb weights",
+          "source": "mic"
+        },
+        {
+          "weight": 15,
+          "sets": null,
+          "reps": 12,
+          "raw": "15 lb 12 reps last set",
+          "source": "mic"
+        }
+      ]
+    },
+    "db-shoulder-press": {
+      "exercise": "Seated dumbbell shoulder press",
+      "entries": [
+        {
+          "weight": null,
+          "sets": null,
+          "reps": 15,
+          "raw": "first set 15 reps",
+          "source": "mic"
+        },
+        {
+          "weight": 15,
+          "sets": null,
+          "reps": 2,
+          "raw": "15 on 2nd and 15 on 3rd",
+          "source": "mic"
+        }
+      ]
+    },
+    "goblet-squat": {
+      "exercise": "Goblet squat",
+      "entries": [
+        {
+          "weight": null,
+          "sets": null,
+          "reps": 15,
+          "raw": "first set 15 reps body",
+          "source": "mic"
+        },
+        {
+          "weight": null,
+          "sets": null,
+          "reps": 15,
+          "raw": "15 on the second set",
+          "source": "mic"
+        },
+        {
+          "weight": null,
+          "sets": null,
+          "reps": 15,
+          "raw": "15 unless it",
+          "source": "mic"
+        }
+      ]
+    },
+    "lateral-raises": {
+      "exercise": "Lateral raises",
+      "entries": [
+        {
+          "weight": 5,
+          "sets": 3,
+          "reps": 15,
+          "raw": "all three sets were 15 reps at 5 lb each arm",
+          "source": "mic"
+        }
+      ]
+    },
+    "lunges": {
+      "exercise": "Walking lunges",
+      "entries": [
+        {
+          "weight": null,
+          "sets": null,
+          "reps": 5,
+          "raw": "first set five reps each leg",
+          "source": "mic"
+        },
+        {
+          "weight": null,
+          "sets": null,
+          "reps": null,
+          "raw": "second set the same",
+          "source": "mic"
+        },
+        {
+          "weight": null,
+          "sets": null,
+          "reps": 3,
+          "raw": "third set was three reps it's like",
+          "source": "mic"
+        }
+      ]
+    },
+    "rear-delt": {
+      "exercise": "Rear delt fly or face pull",
+      "entries": [
+        {
+          "weight": 5,
+          "sets": 3,
+          "reps": 15,
+          "raw": "three sets with 5 lb at 15 reps",
+          "source": "mic"
+        }
+      ]
+    }
   }
 }
