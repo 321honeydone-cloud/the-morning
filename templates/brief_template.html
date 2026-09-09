@@ -20,10 +20,12 @@
   --line:#2a2a30; --line-soft:#1c1c22; --green:#5fb85f; --muted:#777;
   --ease:cubic-bezier(.2,.7,.2,1);
 }
-body{background:var(--bg);color:#fff;font-family:'Barlow',sans-serif;min-height:100vh;position:relative;overflow-x:hidden;}
+body{background:var(--bg);color:#fff;font-family:'Barlow',sans-serif;min-height:100vh;position:relative;}
 body::before{content:'';position:fixed;inset:0;z-index:0;background-image:repeating-linear-gradient(45deg,#101013 0px,#101013 2px,#0c0c0f 2px,#0c0c0f 4px);opacity:.7;}
 body::after{content:'';position:fixed;inset:0;z-index:0;background:radial-gradient(ellipse at 25% 10%,rgba(201,162,39,.10),transparent 55%);}
-.wrap{position:relative;z-index:2;max-width:1000px;margin:0 auto;padding:36px 24px 80px;}
+.wrap{position:relative;z-index:2;max-width:1340px;margin:0 auto;padding:36px 24px 80px;}
+.briefgrid{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:26px;align-items:start;}
+.briefmain{min-width:0;}
 
 .topbar{display:flex;align-items:center;justify-content:space-between;padding-bottom:20px;border-bottom:2px solid var(--gold);margin-bottom:30px;}
 .brand{display:flex;align-items:center;gap:14px;}
@@ -180,9 +182,36 @@ body::after{content:'';position:fixed;inset:0;z-index:0;background:radial-gradie
 .jobmeta b{color:#fff;font-weight:400;}
 .prepnote{font-size:12.5px;color:var(--muted);padding:12px 18px 14px;border-top:1px solid var(--line-soft);margin-top:8px;line-height:1.5;}
 
+
+/* weekly schedule rail, sticky on the right */
+.rail{position:sticky;top:18px;align-self:start;max-height:calc(100vh - 36px);overflow-y:auto;background:var(--card);border:1px solid var(--line);border-top:3px solid var(--gold);backdrop-filter:blur(2px);scrollbar-width:thin;scrollbar-color:var(--line) transparent;}
+.rail::-webkit-scrollbar{width:6px;}
+.rail::-webkit-scrollbar-thumb{background:var(--line);}
+.rail h2{font-family:'Oswald';font-size:13px;letter-spacing:.08em;text-transform:uppercase;padding:13px 16px;border-bottom:1px solid var(--line);color:var(--gold);position:sticky;top:0;background:#131317;z-index:3;}
+.rday{border-bottom:1px solid var(--line-soft);padding:11px 16px 12px;}
+.rday:last-child{border-bottom:none;}
+.rday.today{background:rgba(201,162,39,.07);border-left:3px solid var(--gold);padding-left:13px;}
+.rdh{display:flex;align-items:baseline;justify-content:space-between;gap:8px;margin-bottom:7px;}
+.rdd{font-family:'Space Mono';font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);}
+.rday.today .rdd{color:var(--gold);}
+.rdw{font-family:'Space Mono';font-size:9.5px;color:#7fa8d9;white-space:nowrap;}
+.ritem{display:flex;gap:9px;padding:4px 0;font-size:12.5px;line-height:1.4;color:#c4c4ca;}
+.ritem .rtm{font-family:'Space Mono';font-size:9.5px;color:var(--muted);flex:0 0 46px;padding-top:2px;letter-spacing:.03em;}
+.ritem.job .rtx{color:#fff;}
+.ritem.job .rtm{color:var(--gold);}
+.ritem .rtx b{font-weight:500;color:#fff;}
+.rempty{font-family:'Space Mono';font-size:10px;color:#4d4d55;letter-spacing:.08em;text-transform:uppercase;padding:2px 0;}
+.railfoot{font-family:'Space Mono';font-size:9.5px;color:var(--muted);letter-spacing:.06em;line-height:1.7;padding:12px 16px 14px;border-top:1px solid var(--line);text-transform:uppercase;}
+.railfoot b{color:var(--gold);font-weight:400;}
+
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation:none !important;transition:none !important;}
   .stat,.panel{opacity:1 !important;transform:none !important;}
+}
+@media (max-width:1080px){
+  .briefgrid{grid-template-columns:1fr;}
+  .rail{position:static;max-height:none;overflow:visible;margin-bottom:26px;order:-1;}
+  .rail h2{position:static;}
 }
 @media (max-width:680px){
   .grid{grid-template-columns:repeat(2,1fr);}
@@ -230,7 +259,14 @@ body::after{content:'';position:fixed;inset:0;z-index:0;background:radial-gradie
   </div>
 
   <div id="view-brief">
+    <div class="briefgrid">
+      <div class="briefmain">
 __BRIEF_BODY__
+      </div>
+      <aside class="rail">
+__WEEK_RAIL__
+      </aside>
+    </div>
   </div>
 
   <div id="view-workout" hidden>

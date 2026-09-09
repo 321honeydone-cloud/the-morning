@@ -44,8 +44,10 @@ holds the chassis (fonts, tokens, CSS, workout tab, JS) and one placeholder,
 `__BRIEF_BODY__`, which the daily build fills with the whole BRIEF tab. Build the body in
 this order:
 
-headline · terrain · acts · stat grid · NEEDS ATTENTION · VA CLAIM · LEADS AND QUOTES ·
-MONEY · ALBIE · SkillBridge strip · RESOLVED · WEEK AHEAD
+headline · terrain · acts · stat grid · NEEDS ATTENTION · JOB PREP · VA CLAIM · LEADS AND
+QUOTES · MONEY · ALBIE · countdown strip · RESOLVED · WEEK AHEAD
+
+The weekly schedule rail is built separately into `__WEEK_RAIL__`, see its section below.
 
 A panel with nothing real in it gets dropped for the day, heading and all. Never render an
 empty panel or a placeholder row.
@@ -141,6 +143,35 @@ two day job keeps its ticks across both days while a brand new job always opens 
 card. Every `.pitem` MUST carry a unique `data-k`. Without it all items share one bucket and
 ticking a single box makes the whole card come back checked. Add a
 gotcha line naming the next job on the calendar so nothing bleeds into it.
+
+## Weekly schedule rail (added 2026-09-09)
+
+The BRIEF tab is a two column grid. `.briefmain` holds the body that `__BRIEF_BODY__`
+fills. `.rail` on the right holds `__WEEK_RAIL__` and is `position:sticky`, so the whole
+week stays on screen while Manny scrolls everything else. He asked for this after nearly
+missing things that were on the calendar but buried in the page.
+
+Build the rail every run, seven `.rday` blocks starting with today:
+
+- Header per day: `.rdd` day and date, `.rdw` high and rain percent from the same forecast
+  the WEEK AHEAD panel uses.
+- Today's block gets `.rday.today` for the gold left bar and tint.
+- One `.ritem` per happening, `.rtm` for the time and `.rtx` for the text. Use `all day`
+  for all day events and `no time` for a real commitment with no time set yet, which is the
+  case worth calling out loudest.
+- Jobber visits and quote reminders get `.ritem.job` so the time reads gold and the client
+  name reads white. Wrap the client name in `<b>`.
+- A day with nothing gets `.rempty` and the words "Nothing booked". This is the one place a
+  panel does NOT get dropped when empty, because a blank Saturday is information.
+- `.railfoot` carries the next hard date past the seven days plus the source line.
+
+Sources are every calendar from `list_calendars`, same as the rest of the gather, plus
+anything with a real date that is NOT on a calendar yet (a client text agreeing to a day,
+for example). Those get `no time` and a note saying it is not on the calendar. That is the
+whole point of the rail.
+
+Layout notes: the rail collapses above the body under 1080px wide. `body` must NOT carry
+`overflow-x:hidden`, it breaks `position:sticky` in Chrome. `.wrap` is 1340px to make room.
 
 ## Google search bar
 
