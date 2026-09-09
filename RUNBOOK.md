@@ -35,7 +35,12 @@ Daily pipeline additions (every run, not just training days):
 
 1. Before building: search Gmail for Whspr workout transcript emails (subject or sender containing "whspr", unconfigured until Manny sends a test note). Write each as a `workouts/log/*.json` entry with the raw transcript.
 2. Run `python3 tools/workout_parse.py .` then `git rm` the consumed `workouts/log/*.json` files. Commit the updated `workouts/history.json`.
-3. Build the brief from `templates/brief_template.html`: substitute the font placeholders, `__PLAN_JSON__` with `workouts/plan.json`, `__HISTORY_JSON__` with `workouts/history.json`, and `__GH_TOKEN__` with the queue-writer token. Update the date, weather, headline, terrain, stats, and list panels for the day. The workout tab itself is client-side and picks the right day automatically.
+3. Build the brief from `templates/brief_template.html`: substitute the font placeholders,
+   `__PLAN_JSON__` with `workouts/plan.json`, `__HISTORY_JSON__` with `workouts/history.json`,
+   `__GH_TOKEN__` with the queue-writer token, `__BRIEF_BODY__` with the whole BRIEF tab, and
+   `__WEEK_RAIL__` with the seven day sticky schedule rail (see its section below). The rail is
+   not optional and a missed substitution renders as literal text on the page, so grep the built
+   file for any remaining double underscore placeholder before encrypting. Update the date, weather, headline, terrain, stats, and list panels for the day. The workout tab itself is client-side and picks the right day automatically.
 
 ## Panels (added 2026-08-19)
 
