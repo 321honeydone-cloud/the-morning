@@ -265,6 +265,43 @@
         "Diagnosis is billable on its own, get the yes on repair before parts go in",
         "Attic insulation over a non IC housing is a fire callback waiting, flag it in writing"
       ]
+    },
+    {
+      "id": "toilet",
+      "match": [
+        "toilet",
+        "commode",
+        "water closet",
+        "wax ring",
+        "flange"
+      ],
+      "label": "Toilet removal and replacement",
+      "buy": [
+        "Extra thick wax ring plus a spare, or a waxless seal if the flange sits low",
+        "New closet bolts, brass, with the plastic retainers",
+        "Braided stainless supply line, 12 inch and 16 inch both ride along",
+        "100% silicone, white, for the base bead",
+        "Shims, plastic only, never wood",
+        "Flange repair ring in case the old one is cracked",
+        "Shop towels and a gallon jug for the bowl water"
+      ],
+      "tools": [
+        "Adjustable wrench and a basin wrench",
+        "Hacksaw for seized closet bolts",
+        "Putty knife and a fresh razor scraper",
+        "Shop vac that will pull water",
+        "Torpedo level",
+        "Furniture dolly or a helper, an old one piece is heavy",
+        "Nitrile gloves and a contractor bag for the old unit"
+      ],
+      "site": [
+        "Photo the old toilet and the floor around it before anything moves, that is the before shot",
+        "Shut the angle stop and test it, a stop that will not hold is the whole job stopping",
+        "Vac the tank and bowl dry before you lift, water on a client floor is the callback",
+        "Check the flange height against the finished floor before you set the wax, that decides which ring",
+        "Set it once and do not rock it, a reseated wax ring leaks a week later",
+        "Bead the base but leave the back open so a future leak shows itself"
+      ]
     }
   ]
 }
