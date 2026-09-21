@@ -4,10 +4,11 @@
 Usage: python3 encrypt_brief.py <input.html> <output.html> <PIN>
 
 AES-256-GCM, key derived with PBKDF2-HMAC-SHA256 (600k iterations).
+Plaintext is gzipped before encryption (payload flag z=1) to keep the file small.
 Output is a self-contained index.html: PIN screen + ciphertext + WebCrypto decrypt.
 Supports "remember this device" via localStorage (stores the derived key, not the PIN).
 """
-import sys, os, json, base64, hashlib
+import sys, os, json, base64, hashlib, gzip
 from cryptography.hazmat.primitives.ciphers.aead import AESGCM
 
 ITERATIONS = 600_000
@@ -21,8 +22,9 @@ def encrypt(html: bytes, pin: str):
     salt = SALT
     key = hashlib.pbkdf2_hmac("sha256", pin.encode(), salt, ITERATIONS, dklen=32)
     iv = os.urandom(12)
-    ct = AESGCM(key).encrypt(iv, html, None)
+    ct = AESGCM(key).encrypt(iv, gzip.compress(html, 9, mtime=0), None)
     return {
+        "z": 1,
         "salt": base64.b64encode(salt).decode(),
         "iv": base64.b64encode(iv).decode(),
         "ct": base64.b64encode(ct).decode(),
@@ -73,8 +75,11 @@ async function deriveKey(pin){
     mat, {name:"AES-GCM", length:256}, true, ["decrypt"]);
 }
 async function tryDecrypt(key){
-  const pt = await crypto.subtle.decrypt({name:"AES-GCM", iv:b64(DATA.iv)}, key, b64(DATA.ct));
-  let html = new TextDecoder().decode(pt);
+  const ct = Array.isArray(DATA.ct) ? DATA.ct.join("") : DATA.ct;
+  const pt = await crypto.subtle.decrypt({name:"AES-GCM", iv:b64(DATA.iv)}, key, b64(ct));
+  let html = DATA.z
+    ? await new Response(new Blob([pt]).stream().pipeThrough(new DecompressionStream("gzip"))).text()
+    : new TextDecoder().decode(pt);
   html = html.replace(/<head([^>]*)>/i, '<head$1><base target="_blank">');
   document.title = "Morning brief";
   const frame = document.createElement("iframe");
@@ -121,7 +126,11 @@ document.getElementById("pin").addEventListener("keydown", e => { if(e.key === "
 def main():
     src, dst, pin = sys.argv[1], sys.argv[2], sys.argv[3]
     payload = encrypt(open(src, "rb").read(), pin)
-    open(dst, "w").write(GATE.replace("__PAYLOAD__", json.dumps(payload)))
+    # ciphertext split into 64 char lines so the file diffs and copies cleanly
+    ct = payload.pop("ct")
+    lines = ",\n".join(json.dumps(ct[i:i+64]) for i in range(0, len(ct), 64))
+    body = json.dumps(payload)[:-1] + ',\n"ct":[\n' + lines + '\n]}'
+    open(dst, "w").write(GATE.replace("__PAYLOAD__", body))
     print(f"wrote {dst} ({os.path.getsize(dst)} bytes)")
 
 if __name__ == "__main__":
